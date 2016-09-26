@@ -1,4 +1,4 @@
-package com.washcar.firstproject.entity;
+package com.sample.firstproject.entity;
 
 import java.io.Serializable;
 
@@ -23,7 +23,8 @@ public class BaseEntity implements Serializable {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public BaseEntity setId(Long id) {
 		this.id = id;
+		return this;
 	}
 }

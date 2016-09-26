@@ -1,0 +1,16 @@
+<section ng-init="initForm()">
+	<form novalidate name="form" ng-submit="submit()">
+	<h3>New User</h3>
+	<hr>
+		<div class="form-group">
+			<label for="firstName">First Name:</label>
+			<input name="firstName" type="text" placeholder="ex: Gustavo" required ng-model="defaultUser.firstName"/>
+		</div>
+		<div class="form-group">
+			<label for="email">Email:</label>
+			<input name="email" type="email" placeholder="ex: guspb@email.com" required ng-model="defaultUser.email"/>
+		</div>
+		<button type="submit" class="btn btn-primary" ng-disabled="form.$invalid" >Submit</button>
+		<a class="btn btn-danger" href="/#/user" >Cancel</button>
+	</form>
+</section>

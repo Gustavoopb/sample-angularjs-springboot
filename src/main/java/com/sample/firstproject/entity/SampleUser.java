@@ -1,4 +1,4 @@
-package com.washcar.firstproject.entity;
+package com.sample.firstproject.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.Email;
  *
  */
 @Entity
-public class WashUser extends BaseEntity {
+public class SampleUser extends BaseEntity {
 
 	private static final long serialVersionUID = -8001665107001675564L;
 
@@ -21,11 +21,16 @@ public class WashUser extends BaseEntity {
 	@Column
 	private String email;
 
+	public SampleUser setId(Long id) {
+		super.setId(id);
+		return this;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
 
-	public WashUser setFirstName(String firstName) {
+	public SampleUser setFirstName(String firstName) {
 		this.firstName = firstName;
 		return this;
 	}
@@ -34,7 +39,7 @@ public class WashUser extends BaseEntity {
 		return email;
 	}
 
-	public WashUser setEmail(String email) {
+	public SampleUser setEmail(String email) {
 		this.email = email;
 		return this;
 	}
