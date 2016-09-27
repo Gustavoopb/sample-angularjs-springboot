@@ -1,4 +1,4 @@
-angular.module('sampleappr').controller('UserController',
+angular.module('sampleapp').controller('UserController',
 		function($scope, userService, $routeParams, $window) {
 			$scope.initList = function() {
 				userService.query(function(users) {
