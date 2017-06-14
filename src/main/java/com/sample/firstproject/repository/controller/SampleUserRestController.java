@@ -1,5 +1,9 @@
 package com.sample.firstproject.repository.controller;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +22,9 @@ public class SampleUserRestController {
 
 	@Autowired
 	private ISampleUserRepository sampleUserRepository;
+
+	@Autowired
+	private EntityManager entityManager;
 
 	@RequestMapping(value = "/server/user", method = RequestMethod.GET)
 	public Iterable<SampleUser> findAllSampleUser() {
@@ -39,5 +46,16 @@ public class SampleUserRestController {
 	@RequestMapping(value = "/server/user", method = RequestMethod.DELETE)
 	public void deleteSampleUser(@RequestParam(name = "id", required = true) Long id) {
 		this.sampleUserRepository.delete(id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/server/test", method = RequestMethod.GET)
+	public List<SampleUser> methodTest() {
+		List<SampleUser> list = (List<SampleUser>) entityManager
+				.createNativeQuery("select * from sample_user", SampleUser.class).getResultList();
+		for (SampleUser sampleUser : list) {
+			System.err.println(sampleUser.getId() + " - " + sampleUser.getFirstName() + " - " + sampleUser.getEmail());
+		}
+		return list;
 	}
 }
